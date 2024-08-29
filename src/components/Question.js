@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { connect } from "react-redux";
-import { setAuthedUser } from "../actions/authedUser";
 import { useNavigate } from "react-router-dom";
 import { formatDate } from "../utils/helpers";
 

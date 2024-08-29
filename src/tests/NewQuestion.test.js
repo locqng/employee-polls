@@ -1,10 +1,8 @@
 import * as React from "react";
-import { render, fireEvent, waitFor } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import configureMockStore from "redux-mock-store";
-import * as router from "react-router";
-import middleware from "../middleware";
 import NewQuestion from "../components/NewQuestion";
 import { thunk } from "redux-thunk";
 

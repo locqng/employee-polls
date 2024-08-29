@@ -2,13 +2,25 @@ import * as React from "react";
 import { render } from "@testing-library/react";
 import App from "../components/App";
 import { Provider } from "react-redux";
-import reducer from "../reducers";
-import middleware from "../middleware";
-import { configureStore } from "@reduxjs/toolkit";
+import configureMockStore from "redux-mock-store";
 import { BrowserRouter } from "react-router-dom";
+import { thunk } from "redux-thunk";
 
 describe("App", () => {
-  const store = configureStore({ reducer, middleware });
+  const mockStore = configureMockStore([thunk]);
+  const initialState = {
+    users: {
+      user1: {
+        id: "user1",
+        password: "123",
+      },
+      user2: {
+        id: "user2",
+        password: "123",
+      },
+    },
+  };
+  const store = mockStore(initialState);
   it("matches the snapshot", () => {
     var component = render(
       <Provider store={store}>
