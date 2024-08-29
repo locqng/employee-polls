@@ -1,13 +1,210 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Arial, sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.question-board {
+  max-height: 400px;
+  display: inline-block;
+  overflow: auto;
+}
+
+.question-box {
+  display: inline-block;
+  width: 250px;
+  max-height: 200px;
+  border: 1px solid #dad7d7;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.question-box p {
+  color: #969696;
+  font-size: 14px;
+}
+
+.center {
+  text-align: center;
+}
+
+.login {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin: 0 auto;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+  cursor: pointer;
+  display: block;
+
+  input {
+    display: block;
+    margin: 10px auto;
+  }
+
+  button {
+    display: block;
+    margin: 16px auto;
+  }
+}
+
+.poll-options {
+  display: flex;
+  justify-content: space-around;
+
+  .option {
+    font-weight: lighter;
+    font-weight: normal;
+    padding: 10px;
+    border-radius: 5px;
+    &.picked {
+      font-style: italic;
+      color: white; /* White text */
+      background-color: #4caf50; /* Green background */
+    }
+  }
+}
+
+.btn {
+  border: 1px solid rgba(0, 0, 0, 0.29);
+  border-radius: 4px;
+  cursor: pointer;
+  background: #fff;
+  font-size: 14px;
+}
+
+.btn:hover {
+  border-color: rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+}
+
+.btn:focus {
+  outline: 0;
+  font-weight: 700;
+  border-width: 2px;
+}
+
+.avatar {
+  height: 300px;
+  border-radius: 150px;
+  margin: 10px;
+}
+
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-decoration: none;
+}
+
+.nav li:first-child {
+  padding-left: 0;
+}
+
+.nav .links {
+  display: flex;
+  margin: auto 0px auto 0px;
+}
+
+.nav .profile {
+  display: flex;
+}
+
+.nav .profile li {
+  display: flex;
+  margin: auto;
+}
+
+.nav .avatar {
+  height: 30px;
+  border-radius: 10px;
+}
+
+.nav .user-name {
+  font-weight: bold;
+  margin: auto;
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style-type: none;
+  padding: 10px;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  color: #252525;
+}
+
+.new-question-form {
+  width: 100%;
+}
+
+.new-question-form input {
+  width: 100%;
+  padding: 10px; /* Space inside the input */
+  margin: 8px 0; /* Space outside the input */
+  border: 1px solid #ccc; /* Border color */
+  border-radius: 3px; /* Rounded corners */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  font-size: 14px; /* Font size */
+  transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+.table-user {
+  display: flex;
+  .table-image {
+    height: 30px;
+    border-radius: 10px;
+    margin: auto 0px auto 0px;
+  }
+
+  div {
+    padding-left: 10px;
+    .table-userName {
+      margin-bottom: 0px;
+    }
+    .table-userid {
+      margin-top: 0px;
+      color: #969696;
+      font-size: 14px;
+    }
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+th,
+td {
+  padding: 15px;
+  text-align: left;
+}
+th {
+  background-color: #f2f2f2;
+  color: black;
+}
+
+td {
+  border-bottom: 1px solid #ddd;
+}
+
+th:first-child,
+td:first-child {
+  width: 50%; /* Adjust this percentage as needed */
 }
