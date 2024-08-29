@@ -15,7 +15,7 @@ const PollPage = (props) => {
 
   useEffect(() => {
     if (authedUser === null) {
-      navigate("/", {state: {previousPage: `/question/${question.id}`}});
+      navigate("/", { state: { previousPage: `/question/${question.id}` } });
     }
     if (question === null) {
       return <p>Question not found</p>;
@@ -61,9 +61,17 @@ const PollPage = (props) => {
           {!isDone ? (
             <button onClick={(e) => handleVote(e, "optionOne")}>Vote</button>
           ) : (
-            <p>
-              {Math.round((voteOneLength / Object.keys(users).length) * 100)}%
-            </p>
+            <div>
+              <p>
+                {voteOneLength} {voteOneLength > 1 ? "votes" : "vote"}
+              </p>
+              <p>
+                {Math.round(
+                  (voteOneLength / (voteOneLength + voteTwoLength)) * 100
+                )}
+                %
+              </p>
+            </div>
           )}
         </div>
         <div>
@@ -75,9 +83,17 @@ const PollPage = (props) => {
           {!isDone ? (
             <button onClick={(e) => handleVote(e, "optionTwo")}>Vote</button>
           ) : (
-            <p>
-              {Math.round((voteTwoLength / Object.keys(users).length) * 100)}%
-            </p>
+            <div>
+              <p>
+                {voteTwoLength} {voteTwoLength > 1 ? "votes" : "vote"}
+              </p>
+              <p>
+                {Math.round(
+                  (voteTwoLength / (voteTwoLength + voteOneLength)) * 100
+                )}
+                %
+              </p>
+            </div>
           )}
         </div>
       </div>
