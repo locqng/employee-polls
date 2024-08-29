@@ -5,12 +5,16 @@ import { useNavigate } from "react-router-dom";
 const LeaderBoard = (props) => {
   const navigate = useNavigate();
   const { users, authedUser } = props;
-  console.log(users);
+  let sortedUser = [];
   useEffect(() => {
     if (authedUser === null) {
       navigate("/", {state: {previousPage: "/leaderboard"}});
     }
   });
+  sortedUser = Object.keys(users).sort(
+    (a, b) => (
+      (users[b].questions.length + Object.keys(users[b].answers).length) - (users[a].questions.length + Object.keys(users[a].answers).length) 
+  ));
 
   return (
     <div>
@@ -23,7 +27,7 @@ const LeaderBoard = (props) => {
           </tr>
         </thead>
         <tbody>
-          {Object.keys(users).map((key) => (
+          {sortedUser.length > 0 && sortedUser.map((key) => (
             <tr>
               <td>
                 <div className="table-user">
