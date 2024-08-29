@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { setAuthedUser } from "../actions/authedUser";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const LoginPage = (props) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { dispatch, users } = props;
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
@@ -31,7 +32,10 @@ const LoginPage = (props) => {
     setId("");
     setPassword("");
     dispatch(setAuthedUser(id));
-    navigate("/home");
+    if (location.state?.previousPage) 
+      navigate(location.state?.previousPage)
+    else 
+      navigate("/home");
   };
   return (
     <div className="center">

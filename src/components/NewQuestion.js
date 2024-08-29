@@ -12,7 +12,7 @@ const NewQuestions = (props) => {
 
   useEffect(() => {
     if (authedUser === null) {
-      navigate("/");
+      navigate("/", {state: {previousPage: "/add"}});
     }
   }, []);
 

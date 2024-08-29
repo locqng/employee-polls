@@ -8,7 +8,7 @@ const LeaderBoard = (props) => {
   console.log(users);
   useEffect(() => {
     if (authedUser === null) {
-      navigate("/");
+      navigate("/", {state: {previousPage: "/leaderboard"}});
     }
   });
 

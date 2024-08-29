@@ -13,7 +13,7 @@ const HomePage = (props) => {
   console.log(user);
   useEffect(() => {
     if (authedUser === null) {
-      navigate("/");
+      navigate("/", {state: {previousPage: "/home"}});
     } else {
       setUnifishedQuestions(
         questionIds.filter((x) => !Object.keys(user.answers).includes(x))

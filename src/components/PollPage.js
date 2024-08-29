@@ -15,7 +15,7 @@ const PollPage = (props) => {
 
   useEffect(() => {
     if (authedUser === null) {
-      navigate("/");
+      navigate("/", {state: {previousPage: `/question/${question.id}`}});
     }
     if (question === null) {
       return <p>Question not found</p>;
