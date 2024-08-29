@@ -11,7 +11,8 @@ const HomePage = (props) => {
 
   const [unfinishedQuestions, setUnifishedQuestions] = useState([]);
   const [finishedQuestions, setFinishedQuestions] = useState([]);
-  console.log(user);
+  const [toggleAnswered, setToggleAnswered] = useState(false);
+
   useEffect(() => {
     if (authedUser === null) {
       navigate("/", { state: { previousPage: currentPath } });
@@ -25,18 +26,35 @@ const HomePage = (props) => {
     }
   }, []);
 
+  const handleToggle = (e) => {
+    setToggleAnswered(e.target.checked);
+  };
+
   return (
     <div>
       {loading === true ? (
         <p>Loading</p>
       ) : (
         <div>
-          <QuestionBoard
-            questionIds={unfinishedQuestions}
-            boardName={"New Question"}
-          />
-          <br />
-          <QuestionBoard questionIds={finishedQuestions} boardName={"Done"} />
+          <div className="slider-block">
+            <p>Answered Questions</p>
+            <label class="switch">
+              <input type="checkbox" onChange={handleToggle} />
+              <span class="slider round"></span>
+            </label>
+          </div>
+          {!toggleAnswered && (
+            <QuestionBoard
+              questionIds={unfinishedQuestions}
+              boardName={"New Questions"}
+            />
+          )}
+          {toggleAnswered && (
+            <QuestionBoard
+              questionIds={finishedQuestions}
+              boardName={"Answered Questions"}
+            />
+          )}
         </div>
       )}
     </div>
