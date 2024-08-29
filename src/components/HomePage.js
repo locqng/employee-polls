@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { handleReceiveQuestions } from "../actions/questions";
+import { useNavigate, useLocation } from "react-router-dom";
 import QuestionBoard from "./QuestionBoard";
 
 const HomePage = (props) => {
   const { loading, user, authedUser, questionIds } = props;
   const navigate = useNavigate();
+  const location = useLocation();
+  const currentPath = location.pathname;
 
   const [unfinishedQuestions, setUnifishedQuestions] = useState([]);
   const [finishedQuestions, setFinishedQuestions] = useState([]);
   console.log(user);
   useEffect(() => {
     if (authedUser === null) {
-      navigate("/", {state: {previousPage: "/home"}});
+      navigate("/", { state: { previousPage: currentPath } });
     } else {
       setUnifishedQuestions(
         questionIds.filter((x) => !Object.keys(user.answers).includes(x))

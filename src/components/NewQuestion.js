@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { handleCreateQuestion } from "../actions/questions";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const NewQuestions = (props) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const currentPath = location.pathname;
+
   const { dispatch, authedUser } = props;
   const [optOneText, setOptOneText] = useState("");
   const [optTwoText, setOptTwoText] = useState("");
@@ -12,7 +15,7 @@ const NewQuestions = (props) => {
 
   useEffect(() => {
     if (authedUser === null) {
-      navigate("/", {state: {previousPage: "/add"}});
+      navigate("/", { state: { previousPage: currentPath } });
     }
   }, []);
 

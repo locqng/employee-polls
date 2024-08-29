@@ -9,7 +9,6 @@ const Question = (props) => {
   const toPoll = (e, id) => {
     e.preventDefault();
     navigate(`/question/${id}`);
-    //Redirect to parent tweet
   };
 
   if (question === null) {
